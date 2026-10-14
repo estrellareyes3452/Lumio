@@ -1,12 +1,19 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, flash, render_template, request, redirect, url_for, flash
+from models.entities.User import User 
 from flask_mysqldb import MySQL
 from flask_login import LoginManager , login_user, login_required, current_user
 from config import config
 from werkzeug.security import generate_password_hash
+from models import ModelUser
 
 lumioApp = Flask(__name__)
 lumioApp.config.from_object(config['Development'])
 db = MySQL(lumioApp)
+adminUsuario = LoginManager(lumioApp)
+
+@adminUsuario.user_loader
+def agregarUsuario(id):
+    return ModelUser.get_by_id(db, id)
 
 
 @lumioApp.route("/")
@@ -30,6 +37,35 @@ def signup():
             return render_template('home.html')
         else :
             return render_template('home.html')
+
+@lumioApp.route('/signin', methods=['GET', 'POST'])
+def signin():
+    if request.method == 'POST':
+        usuario = User(request.form['nombre'], request.form['correo'], request.form['clave'], None)
+        usuarioAutenticado = ModelUser.signin(db, usuario)
+        if usuarioAutenticado is not None:
+            login_user(usuarioAutenticado)
+            if usuarioAutenticado.clave:
+                if usuarioAutenticado.perfil == 'A':
+                    return render_template('admin.html')
+                else:
+                    return render_template('home.html')
+            else:
+                flash('Contraseña incorrecta')
+                return redirect(url_for('home'))
+        else:
+            flash('Usuario inexistente')
+            return redirect(url_for('home'))
+    else:
+        return render_template('home.html')
+
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":
