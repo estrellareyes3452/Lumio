@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumia — Flores que iluminan el momento</title>
+  <meta name="description" content="Lumia: ramos y arreglos florales de autor, entrega el mismo día en Guadalajara.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="/static/css/estilos.css">
+</head>
+<body>
+
+
+  {% include 'components/navbar.html' %}
+
+    <main id="contenido">
+        {% block contenido %}{% endblock %}
+    </main>
+
+    {% include 'components/footer.html' %}
+ 
+
+  <!-- ===========================================================
+       MODALES: Iniciar sesión / Registrarse (vanilla JS, sin backend)
+       =========================================================== -->
+  <div class="modal-overlay" id="modalLogin" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <button type="button" class="modal__close" data-close-modal aria-label="Cerrar">✕</button>
+
+      <div class="modal__brand">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <g>
+            <ellipse cx="50" cy="28" rx="14" ry="22"/>
+            <ellipse cx="70" cy="42" rx="14" ry="22" transform="rotate(72 70 42)"/>
+            <ellipse cx="62" cy="66" rx="14" ry="22" transform="rotate(144 62 66)"/>
+            <ellipse cx="38" cy="66" rx="14" ry="22" transform="rotate(216 38 66)"/>
+            <ellipse cx="30" cy="42" rx="14" ry="22" transform="rotate(288 30 42)"/>
+          </g>
+          <circle class="logo-core" cx="50" cy="50" r="9"/>
+        </svg>
+      </div>
+
+      <h3 id="loginTitle">Bienvenido de nuevo</h3>
+      <p>Ingresa para ver tus pedidos y direcciones guardadas.</p>
+
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="loginEmail">Correo electrónico</label>
+          <input type="email" id="loginEmail" name="correo" placeholder="tu@correo.com" required>
+          <span class="field__error" data-error-for="loginEmail"></span>
+        </div>
+        <div class="field">
+          <label for="loginPassword">Contraseña</label>
+          <input type="password" id="loginPassword" name="clave" placeholder="••••••••" minlength="6" required>
+          <span class="field__error" data-error-for="loginPassword"></span>
+        </div>
+        <div class="field field--row">
+          <label class="checkbox">
+            <input type="checkbox" id="loginRemember" name="remember">
+            <span>Recordarme</span>
+          </label>
+          <a href="#" class="field__link">¿Olvidaste tu contraseña?</a>
+        </div>
+        <button type="submit" class="btn btn--accent btn--block">Iniciar sesión</button>
+      </form>
+
+      <p class="modal__switch">¿Aún no tienes cuenta?
+        <button type="button" data-switch-to="modalRegister">Regístrate aquí</button>
+      </p>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modalRegister" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="registerTitle">
+      <button type="button" class="modal__close" data-close-modal aria-label="Cerrar">✕</button>
+
+      <div class="modal__brand">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <g>
+            <ellipse cx="50" cy="28" rx="14" ry="22"/>
+            <ellipse cx="70" cy="42" rx="14" ry="22" transform="rotate(72 70 42)"/>
+            <ellipse cx="62" cy="66" rx="14" ry="22" transform="rotate(144 62 66)"/>
+            <ellipse cx="38" cy="66" rx="14" ry="22" transform="rotate(216 38 66)"/>
+            <ellipse cx="30" cy="42" rx="14" ry="22" transform="rotate(288 30 42)"/>
+          </g>
+          <circle class="logo-core" cx="50" cy="50" r="9"/>
+        </svg>
+      </div>
+
+      <h3 id="registerTitle">Crea tu cuenta</h3>
+      <p>Guarda direcciones frecuentes y repite tus pedidos favoritos en un clic.</p>
+
+      <form action="{{url_for('signup')}}" method="post" id="registerForm" novalidate>
+        <div class="field">
+          <label for="registerName">Nombre completo</label>
+          <input type="text" id="registerName" name="nombre" placeholder="Tu nombre" required>
+          <span class="field__error" data-error-for="registerName"></span>
+        </div>
+        <div class="field">
+          <label for="registerEmail">Correo electrónico</label>
+          <input type="email" id="registerEmail" name="correo" placeholder="tu@correo.com" required>
+          <span class="field__error" data-error-for="registerEmail"></span>
+        </div>
+        <div class="field">
+          <label for="registerPassword">Contraseña</label>
+          <input type="password" id="registerPassword" name="clave" placeholder="Mínimo 6 caracteres" minlength="6" required>
+          <span class="field__error" data-error-for="registerPassword"></span>
+        </div>
+        <div class="field">
+          <label for="registerPassword2">Confirmar contraseña</label>
+          <input type="password" id="registerPassword2" name="clave2" placeholder="Repite tu contraseña" minlength="6" required>
+          <span class="field__error" data-error-for="registerPassword2"></span>
+        </div>
+        <label class="checkbox">
+          <input type="checkbox" id="registerTerms" name="terms" required>
+          <span>Acepto el aviso de privacidad y los términos de Lumia</span>
+        </label>
+        <button type="submit" class="btn btn--accent btn--block">Registrarme</button>
+      </form>
+
+      <p class="modal__switch">¿Ya tienes cuenta?
+        <button type="button" data-switch-to="modalLogin">Inicia sesión</button>
+      </p>
+    </div>
+  </div>
+
+  <script src="/static/js/script.js"></script>
+</body>
+</html>

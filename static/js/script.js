@@ -62,6 +62,11 @@
     revealEls.forEach((el) => el.classList.add('is-visible'));
   }
 
+  // SAFETY_REVEAL: si por cualquier motivo el observer no dispara, muestra todo
+  window.setTimeout(() => {
+    revealEls.forEach((el) => el.classList.add('is-visible'));
+  }, 2500);
+
   /* ---------- 5. Carrusel de testimonios ---------- */
   const track = document.getElementById('testimonial');
   if (track) {

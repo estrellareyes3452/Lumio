@@ -1,59 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lumia — Flores que iluminan el momento</title>
-  <meta name="description" content="Lumia: ramos y arreglos florales de autor, entrega el mismo día en Guadalajara.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <link rel="stylsheet" hre="/css/all.min.css">
-
-  <link rel="stylesheet" href="/css/styles.css">
-
-
-
-</head>
-<body>
-
-  <!-- ===== NAV ===== -->
-  <header class="site-header" id="siteHeader">
-    <nav class="nav" aria-label="Navegación principal">
-      <a href="#inicio" class="nav__brand" aria-label="Lumia — inicio">
-        <svg class="nav__logo" id="navLogo" width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <g class="logo-petal">
-            <ellipse class="petal petal--1" cx="50" cy="28" rx="14" ry="22"/>
-            <ellipse class="petal petal--2" cx="70" cy="42" rx="14" ry="22" transform="rotate(72 70 42)"/>
-            <ellipse class="petal petal--3" cx="62" cy="66" rx="14" ry="22" transform="rotate(144 62 66)"/>
-            <ellipse class="petal petal--4" cx="38" cy="66" rx="14" ry="22" transform="rotate(216 38 66)"/>
-            <ellipse class="petal petal--5" cx="30" cy="42" rx="14" ry="22" transform="rotate(288 30 42)"/>
-          </g>
-          <circle class="logo-core" cx="50" cy="50" r="9"/>
-        </svg>
-        <span class="nav__wordmark">Lumia</span>
-      </a>
-
-      <ul class="nav__links" id="navLinks">
-        <li><a href="#coleccion">Colecciones</a></li>
-        <li><a href="#historia">Nuestra historia</a></li>
-        <li><a href="#proceso">Cómo funciona</a></li>
-        <li><a href="#testimonios">Clientes</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-
-      <div class="nav__actions">
-        <button type="button" class="btn btn--ghost" id="btnLogin" data-modal="login">Iniciar sesión</button>
-        <button type="button" class="btn btn--primary" id="btnRegister" data-modal="register">Registrarse</button>
-        <button type="button" class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </nav>
-  </header>
-
-  <main id="inicio">
+{% extends "layout.html" %} {% block titulo %}Lumia — Flores que iluminan el momento{%endblock%} {% block contenido %}
+<main id="inicio">
 
     <!-- ===== HERO ===== -->
     <section class="hero" id="hero" aria-label="Presentación">
@@ -94,8 +40,8 @@
         </dl>
       </div>
 
-      <figure class="hero__bouquet reveal" aria-hidden="true">
-        <svg class="bouquet-svg" viewBox="0 0 360 420" xmlns="http://www.w3.org/2000/svg">
+      <figure class="hero__bouquet reveal">
+        <svg class="bouquet-svg" viewBox="0 0 360 420" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <!-- jarrón -->
           <path class="bouquet-svg__vase" d="M140 330 L128 400 Q126 414 140 414 L220 414 Q234 414 232 400 L220 330 Z"/>
           <ellipse class="bouquet-svg__vase-rim" cx="180" cy="330" rx="42" ry="9"/>
@@ -148,6 +94,10 @@
         <svg class="bouquet-svg__petal-float bouquet-svg__petal-float--2" viewBox="0 0 40 40" aria-hidden="true">
           <ellipse cx="20" cy="20" rx="7" ry="12"/>
         </svg>
+
+        <figure class="hero__polaroid">
+          <img src="https://images.unsplash.com/photo-1552174965-c6616f62fc4f?auto=format&fit=crop&w=400&q=70" alt="Ramo de rosas recién entregado" loading="lazy" width="400" height="400">
+        </figure>
       </figure>
     </section>
 
@@ -160,15 +110,18 @@
 
       <div class="coleccion__grid">
         <article class="card reveal">
-          <div class="card__swatch card__swatch--primario" aria-hidden="true">
-            <svg class="card__icon" viewBox="0 0 64 64"><!-- ramo -->
-              <path class="icon-stroke" d="M32 58 V34"/>
-              <path class="icon-stroke" d="M32 34 C 24 30, 20 22, 22 14"/>
-              <path class="icon-stroke" d="M32 34 C 40 30, 44 22, 42 14"/>
-              <circle class="icon-fill" cx="32" cy="20" r="11"/>
-              <circle class="icon-fill icon-fill--soft" cx="18" cy="26" r="8"/>
-              <circle class="icon-fill icon-fill--soft" cx="46" cy="26" r="8"/>
-            </svg>
+          <div class="card__media">
+            <img src="https://images.unsplash.com/photo-1629833790673-e9d1b342a816?auto=format&fit=crop&w=600&q=70" alt="Ramo de rosas blancas y rosadas envuelto en papel" loading="lazy" width="600" height="400">
+            <span class="card__badge" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><!-- ramo -->
+                <path class="icon-stroke" d="M32 58 V34"/>
+                <path class="icon-stroke" d="M32 34 C 24 30, 20 22, 22 14"/>
+                <path class="icon-stroke" d="M32 34 C 40 30, 44 22, 42 14"/>
+                <circle class="icon-fill" cx="32" cy="20" r="11"/>
+                <circle class="icon-fill icon-fill--soft" cx="18" cy="26" r="8"/>
+                <circle class="icon-fill icon-fill--soft" cx="46" cy="26" r="8"/>
+              </svg>
+            </span>
           </div>
           <h3>Ramos clásicos</h3>
           <p>Rosas, lilis y follaje de temporada, atados a mano en papel kraft.</p>
@@ -176,13 +129,16 @@
         </article>
 
         <article class="card reveal">
-          <div class="card__swatch card__swatch--secundario" aria-hidden="true">
-            <svg class="card__icon" viewBox="0 0 64 64"><!-- caja -->
-              <rect class="icon-fill" x="12" y="26" width="40" height="28" rx="3"/>
-              <path class="icon-stroke" d="M12 34 H52"/>
-              <path class="icon-stroke" d="M32 26 V54"/>
-              <path class="icon-stroke" d="M22 26 C 22 16, 42 16, 42 26"/>
-            </svg>
+          <div class="card__media">
+            <img src="https://images.unsplash.com/photo-1615554108316-955645d13bdd?auto=format&fit=crop&w=600&q=70" alt="Arreglos florales exhibidos en mesa de madera de una florería" loading="lazy" width="600" height="400">
+            <span class="card__badge" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><!-- caja -->
+                <rect class="icon-fill" x="12" y="26" width="40" height="28" rx="3"/>
+                <path class="icon-stroke" d="M12 34 H52"/>
+                <path class="icon-stroke" d="M32 26 V54"/>
+                <path class="icon-stroke" d="M22 26 C 22 16, 42 16, 42 26"/>
+              </svg>
+            </span>
           </div>
           <h3>Cajas y sombrereras</h3>
           <p>Arreglos compactos que se sostienen solos, ideales para escritorio.</p>
@@ -190,12 +146,15 @@
         </article>
 
         <article class="card reveal">
-          <div class="card__swatch card__swatch--acento" aria-hidden="true">
-            <svg class="card__icon" viewBox="0 0 64 64"><!-- corazón/ocasión -->
-              <path class="icon-fill" d="M32 52 C 10 38, 8 20, 22 14 C 28 11, 32 16, 32 20 C 32 16, 36 11, 42 14 C 56 20, 54 38, 32 52 Z"/>
-              <path class="icon-stroke icon-stroke--light" d="M20 24 L26 30 L20 36"/>
-              <path class="icon-stroke icon-stroke--light" d="M44 24 L38 30 L44 36"/>
-            </svg>
+          <div class="card__media">
+            <img src="https://images.unsplash.com/photo-1552174965-c6616f62fc4f?auto=format&fit=crop&w=600&q=70" alt="Ramo de rosas rojas y rosadas para una ocasión especial" loading="lazy" width="600" height="400">
+            <span class="card__badge" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><!-- corazón/ocasión -->
+                <path class="icon-fill" d="M32 52 C 10 38, 8 20, 22 14 C 28 11, 32 16, 32 20 C 32 16, 36 11, 42 14 C 56 20, 54 38, 32 52 Z"/>
+                <path class="icon-stroke icon-stroke--light" d="M20 24 L26 30 L20 36"/>
+                <path class="icon-stroke icon-stroke--light" d="M44 24 L38 30 L44 36"/>
+              </svg>
+            </span>
           </div>
           <h3>Ocasiones especiales</h3>
           <p>Aniversarios, graduaciones y disculpas que necesitan algo más grande.</p>
@@ -203,13 +162,16 @@
         </article>
 
         <article class="card reveal">
-          <div class="card__swatch card__swatch--suave" aria-hidden="true">
-            <svg class="card__icon" viewBox="0 0 64 64"><!-- planta -->
-              <path class="icon-fill" d="M16 44 L20 58 H44 L48 44 Z"/>
-              <path class="icon-stroke" d="M32 44 V22"/>
-              <path class="icon-fill icon-fill--soft" d="M32 30 C 20 30, 16 18, 18 8 C 30 8, 34 20, 32 30 Z"/>
-              <path class="icon-fill icon-fill--soft" d="M32 24 C 44 24, 48 12, 46 4 C 34 4, 30 16, 32 24 Z"/>
-            </svg>
+          <div class="card__media">
+            <img src="https://images.unsplash.com/photo-1606146350176-804f4c84fb30?auto=format&fit=crop&w=600&q=70" alt="Planta de interior en maceta de barro" loading="lazy" width="600" height="400">
+            <span class="card__badge" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><!-- planta -->
+                <path class="icon-fill" d="M16 44 L20 58 H44 L48 44 Z"/>
+                <path class="icon-stroke" d="M32 44 V22"/>
+                <path class="icon-fill icon-fill--soft" d="M32 30 C 20 30, 16 18, 18 8 C 30 8, 34 20, 32 30 Z"/>
+                <path class="icon-fill icon-fill--soft" d="M32 24 C 44 24, 48 12, 46 4 C 34 4, 30 16, 32 24 Z"/>
+              </svg>
+            </span>
           </div>
           <h3>Plantas de interior</h3>
           <p>Verde de bajo mantenimiento para quien prefiere regalos que duran.</p>
@@ -221,6 +183,7 @@
     <div class="split">
       <!-- ===== HISTORIA (article) ===== -->
       <article class="historia" id="historia" aria-labelledby="historia-title">
+        <img class="historia__photo reveal" src="https://images.unsplash.com/photo-1663156638731-7fc7a1b1b8d0?auto=format&fit=crop&w=900&q=70" alt="Ramo de flores rosadas preparado en el taller de Lumia" loading="lazy" width="900" height="500">
         <p class="eyebrow reveal">Nuestra historia</p>
         <h2 id="historia-title" class="reveal">Empezamos en una sola cubeta de rosas</h2>
         <p class="reveal">
@@ -351,76 +314,4 @@
     </section>
 
   </main>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="site-footer">
-    <div class="site-footer__grid">
-      <div class="site-footer__brand">
-        <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <g>
-            <ellipse class="petal petal--1" cx="50" cy="28" rx="14" ry="22"/>
-            <ellipse class="petal petal--2" cx="70" cy="42" rx="14" ry="22" transform="rotate(72 70 42)"/>
-            <ellipse class="petal petal--3" cx="62" cy="66" rx="14" ry="22" transform="rotate(144 62 66)"/>
-            <ellipse class="petal petal--4" cx="38" cy="66" rx="14" ry="22" transform="rotate(216 38 66)"/>
-            <ellipse class="petal petal--5" cx="30" cy="42" rx="14" ry="22" transform="rotate(288 30 42)"/>
-          </g>
-          <circle class="logo-core" cx="50" cy="50" r="9"/>
-        </svg>
-        <p>Flores de autor, entregadas el mismo día en Guadalajara y su zona metropolitana.</p>
-
-        <div class="site-footer__social">
-          <a href="#" aria-label="Instagram de Lumia" class="social-link">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle class="social-link__hole" cx="12" cy="12" r="4.2"/><circle class="social-link__hole" cx="17.4" cy="6.6" r="1.1"/></svg>
-          </a>
-          <a href="#" aria-label="Facebook de Lumia" class="social-link">
-            <svg viewBox="0 0 24 24"><path d="M15 3h-2.5C10 3 8.5 4.6 8.5 7.2V10H6v3.5h2.5V21H12v-7.5h2.6L15 10h-3V7.6c0-.8.4-1.3 1.4-1.3H15Z"/></svg>
-          </a>
-          <a href="#" aria-label="WhatsApp de Lumia" class="social-link">
-            <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.6-1.2A9 9 0 1 0 12 3Zm0 2a7 7 0 0 1 5.8 10.9c-.2.3-.5.4-.8.3-1-.3-2.7-1.1-3.1-1.3-.4-.2-.7-.2-1 .2l-.6.7c-.3.3-.5.3-.9.1a7.4 7.4 0 0 1-3.6-3.1c-.3-.4-.2-.7.1-1l.5-.6c.3-.3.3-.6.1-1-.1-.3-1-2.4-1.3-3.2-.3-.8-.6-.7-.9-.7H5.9C5.6 6.3 5 6.9 5 8.4A9.9 9.9 0 0 0 7.4 14 9.6 9.6 0 0 0 12 17c1.3 0 2.6-.3 3.7-.9.9-.5 1.6-1.3 1.8-2.3.1-.5.1-1-.1-1.5-.1-.2-.4-.4-.8-.6L12 5Z"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <nav class="site-footer__col" aria-label="Explora">
-        <h4>Explora</h4>
-        <ul>
-          <li><a href="#coleccion">Colecciones</a></li>
-          <li><a href="#historia">Nuestra historia</a></li>
-          <li><a href="#proceso">Cómo funciona</a></li>
-          <li><a href="#testimonios">Clientes</a></li>
-        </ul>
-      </nav>
-
-      <div class="site-footer__col">
-        <h4>Ayuda</h4>
-        <ul>
-          <li><a href="#">Rastrea tu pedido</a></li>
-          <li><a href="#">Preguntas frecuentes</a></li>
-          <li><a href="#">Cobertura de entrega</a></li>
-          <li><a href="#">Cuidado de las flores</a></li>
-        </ul>
-      </div>
-
-      <div class="site-footer__col">
-        <h4>Contacto</h4>
-        <ul>
-          <li><a href="tel:+523322648899">(33) 2264 8899</a></li>
-          <li><a href="mailto:hola@lumia.mx">hola@lumia.mx</a></li>
-          <li>8:00 a.m. – 8:00 p.m., todos los días</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="site-footer__bottom">
-      <p>© <span id="year"></span> Lumia Flores. Todos los derechos reservados.</p>
-      <p class="site-footer__credit">Hecho a mano en Guadalajara 🌸</p>
-    </div>
-  </footer>
-
-  <script src="/js/bootstrap.bundle.min.js"></script>
-  <script src="/js/all.min.js"></script>
-  <script src="/js/script.js"></script>
-
-
-</body>
-</html>
+  {%endblock%}

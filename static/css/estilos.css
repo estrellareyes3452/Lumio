@@ -31,7 +31,9 @@
   --radius-md: 18px;
   --radius-lg: 32px;
   --container: 1180px;
-  --gap: clamp(1.25rem, 2vw, 2.5rem);
+  --gap: clamp(1.5rem, 3vw, 3rem);
+  --gutter: clamp(1.5rem, 6vw, 4.5rem);
+  --section-y: clamp(4rem, 9vw, 7rem);
 
   --shadow-soft: 0 20px 40px -24px rgba(62,46,40,0.35);
   --shadow-card: 0 14px 30px -18px rgba(62,46,40,0.28);
@@ -134,12 +136,12 @@ input{ font: inherit; }
 .btn--lg{ padding: .95em 1.9em; font-size: 1.02rem; }
 
 /* ===== Reveal on scroll ===== */
-.reveal{
+.js .reveal{
   opacity: 0;
   transform: translateY(24px);
   transition: opacity .7s var(--ease), transform .7s var(--ease);
 }
-.reveal.is-visible{
+.js .reveal.is-visible{
   opacity: 1;
   transform: translateY(0);
 }
@@ -164,7 +166,7 @@ input{ font: inherit; }
 .nav{
   max-width: var(--container);
   margin: 0 auto;
-  padding: 1.1rem clamp(1.25rem, 4vw, 2.5rem);
+  padding: 1.1rem var(--gutter);
   display: flex;
   align-items: center;
   gap: 1.5rem;
@@ -245,7 +247,7 @@ input{ font: inherit; }
     flex-direction: column;
     align-items: flex-start;
     background: var(--color-fondo);
-    padding: 1.5rem clamp(1.25rem, 4vw, 2.5rem);
+    padding: 1.5rem var(--gutter);
     border-bottom: 1px solid var(--color-borde);
     transform-origin: top;
     transform: scaleY(0);
@@ -274,7 +276,7 @@ input{ font: inherit; }
   position: relative;
   max-width: var(--container);
   margin: 0 auto;
-  padding: clamp(3rem, 8vw, 6rem) clamp(1.25rem, 4vw, 2.5rem) 4rem;
+  padding: clamp(3rem, 8vw, 6rem) var(--gutter) 4rem;
   display: grid;
   grid-template-columns: 1.15fr .85fr;
   gap: var(--gap);
@@ -426,7 +428,7 @@ input{ font: inherit; }
 .coleccion{
   max-width: var(--container);
   margin: 0 auto;
-  padding: 3rem clamp(1.25rem, 4vw, 2.5rem) 5rem;
+  padding: var(--section-y) var(--gutter);
 }
 .coleccion__grid{
   display: grid;
@@ -437,7 +439,7 @@ input{ font: inherit; }
   background: #fff;
   border: 1px solid var(--color-borde);
   border-radius: var(--radius-md);
-  padding: 1.6rem;
+  padding: 1.8rem;
   transition: transform .3s var(--ease), box-shadow .3s var(--ease);
 }
 .card:hover{
@@ -523,7 +525,7 @@ input{ font: inherit; }
 .split{
   max-width: var(--container);
   margin: 0 auto;
-  padding: 2rem clamp(1.25rem, 4vw, 2.5rem) 5rem;
+  padding: 0 var(--gutter) var(--section-y);
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   gap: var(--gap);
@@ -590,7 +592,7 @@ input{ font: inherit; }
    =========================================================== */
 .proceso{
   background: var(--color-fondo-alterna);
-  padding: 4.5rem clamp(1.25rem, 4vw, 2.5rem);
+  padding: var(--section-y) var(--gutter);
 }
 .proceso__steps{
   max-width: var(--container);
@@ -639,7 +641,7 @@ input{ font: inherit; }
 .testimonios{
   max-width: var(--container);
   margin: 0 auto;
-  padding: 5rem clamp(1.25rem, 4vw, 2.5rem);
+  padding: var(--section-y) var(--gutter);
 }
 .testimonial{
   max-width: 680px;
@@ -713,7 +715,7 @@ input{ font: inherit; }
 .cta-final{
   position: relative;
   max-width: var(--container);
-  margin: 0 auto 5rem;
+  margin: 0 auto var(--section-y);
   padding: 4rem clamp(1.5rem, 6vw, 4rem);
   text-align: center;
   background: linear-gradient(135deg, var(--color-primario), var(--color-acento-oscuro));
@@ -738,7 +740,7 @@ input{ font: inherit; }
 .site-footer{
   background: var(--color-texto);
   color: #E9DCD3;
-  padding: 4rem clamp(1.25rem, 4vw, 2.5rem) 1.6rem;
+  padding: 4rem var(--gutter) 1.6rem;
 }
 .site-footer .petal{ fill: var(--color-acento); }
 .site-footer .petal--2, .site-footer .petal--4{ fill: var(--color-primario); }
