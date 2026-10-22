@@ -60,6 +60,18 @@ def signin():
         return render_template('home.html')
 
 
+@LumioApp.route('/signout',methods=['GET'´, 'POST'])
+def signout ():
+    logout_user()
+    return redirect(url_for('home'))
+
+@LumioApp.route('/home_admin',methods=['GET', 'POST'])
+def home_admin():
+    return render_template('admi.html')
+
+@LumioApp.route('/sUsuario',methods=['GET', 'POST'])
+def sUsuario():
+    return render_template('user.html')
 
 
 

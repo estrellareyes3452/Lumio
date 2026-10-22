@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 20-10-2026 a las 16:58:09
--- Versión del servidor: 8.0.43
+-- Tiempo de generación: 22-10-2026 a las 17:46:30
+-- Versión del servidor: 8.0.46
 -- Versión de PHP: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categoría` (
   `id_categoría` int NOT NULL,
-  `nombre` varchar(150) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `descripción` varchar(200) COLLATE utf8mb4_spanish_ci NOT NULL
+  `nombre` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  `descripción` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 -- --------------------------------------------------------
@@ -70,7 +70,7 @@ CREATE TABLE `hola` (
 CREATE TABLE `pedido` (
   `id_pedido` int NOT NULL,
   `fecha` datetime NOT NULL,
-  `estado` varchar(150) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `estado` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `total` float NOT NULL,
   `id_usuario` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
@@ -97,11 +97,11 @@ CREATE TABLE `pertenece` (
 
 CREATE TABLE `producto` (
   `id_producto` int NOT NULL,
-  `nombre` varchar(150) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `descripción` varchar(200) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `nombre` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  `descripción` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `precio` float NOT NULL,
   `stock` int NOT NULL,
-  `imagen` varchar(20) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `imagen` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
   `id_categoria` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
@@ -225,6 +225,12 @@ ALTER TABLE `realiza`
 --
 
 --
+-- Filtros para la tabla `contiene`
+--
+ALTER TABLE `contiene`
+  ADD CONSTRAINT `contiene_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`) ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `hola`
 --
 ALTER TABLE `hola`
@@ -240,7 +246,9 @@ ALTER TABLE `pedido`
 -- Filtros para la tabla `pertenece`
 --
 ALTER TABLE `pertenece`
-  ADD CONSTRAINT `pertenece_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `hola` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `pertenece_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `hola` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `pertenece_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `pertenece_ibfk_3` FOREIGN KEY (`id_categoria`) REFERENCES `categoría` (`id_categoría`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `realiza`

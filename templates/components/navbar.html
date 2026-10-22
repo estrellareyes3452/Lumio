@@ -1,7 +1,7 @@
 <!-- ===== NAV ===== -->
 <header class="site-header" id="siteHeader">
     <nav class="nav" aria-label="Navegación principal">
-      <a href="#inicio" class="nav__brand" aria-label="Lumia — inicio">
+      <a href="{{url_for('home')}}" class="nav__brand" aria-label="Lumia — inicio">
         <svg class="nav__logo" id="navLogo" width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <g class="logo-petal">
             <ellipse class="petal petal--1" cx="50" cy="28" rx="14" ry="22"/>
@@ -21,11 +21,12 @@
         <li><a href="#proceso">Cómo funciona</a></li>
         <li><a href="#testimonios">Clientes</a></li>
         <li><a href="#contacto">Contacto</a></li>
+
       </ul>
 
       <div class="nav__actions">
-        <button type="button" class="btn btn--ghost" id="btnLogin" data-modal="modalLogin">Iniciar sesión</button>
-        <button type="button" class="btn btn--primary" id="btnRegister" data-modal="modalRegister">Registrarse</button>
+        <a class="btn btn--ghost" id="btnLogin" type="button">{{current_user.nombre}}</a>
+        <a class="btn btn--primary" id="btnRegister" type="button" href="{{url_for('sinout')}}">Cerrar sesion</a>
         <button type="button" class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
           <span></span><span></span><span></span>
         </button>
