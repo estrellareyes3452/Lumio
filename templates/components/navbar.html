@@ -25,8 +25,8 @@
       </ul>
 
       <div class="nav__actions">
-        <a class="btn btn--ghost" id="btnLogin" type="button">{{current_user.nombre}}</a>
-        <a class="btn btn--primary" id="btnRegister" type="button" href="{{url_for('sinout')}}">Cerrar sesion</a>
+        <button type="button" class="btn btn--ghost" id="btnLogin" data-modal="modalLogin">Iniciar sesión</button>
+        <button type="button" class="btn btn--primary" id="btnRegister" data-modal="modalRegister">Registrarse</button>
         <button type="button" class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
           <span></span><span></span><span></span>
         </button>

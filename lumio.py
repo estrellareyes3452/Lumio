@@ -1,10 +1,10 @@
 from flask import Flask, flash, render_template, request, redirect, url_for, flash
-from models.entities.User import User 
 from flask_mysqldb import MySQL
-from flask_login import LoginManager , login_user, login_required, current_user
+from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from config import config
 from werkzeug.security import generate_password_hash
-from models import ModelUser
+from models.entities.User import User
+from models.ModelUser import ModelUser
 
 lumioApp = Flask(__name__)
 lumioApp.config.from_object(config['Development'])
@@ -60,16 +60,16 @@ def signin():
         return render_template('home.html')
 
 
-@LumioApp.route('/signout',methods=['GET'´, 'POST'])
+@lumioApp.route('/signout',methods=['GET', 'POST'])
 def signout ():
     logout_user()
     return redirect(url_for('home'))
 
-@LumioApp.route('/home_admin',methods=['GET', 'POST'])
+@lumioApp.route('/home_admin',methods=['GET', 'POST'])
 def home_admin():
     return render_template('admi.html')
 
-@LumioApp.route('/sUsuario',methods=['GET', 'POST'])
+@lumioApp.route('/sUsuario',methods=['GET', 'POST'])
 def sUsuario():
     return render_template('user.html')
 

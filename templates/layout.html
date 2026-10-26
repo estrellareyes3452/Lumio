@@ -13,9 +13,15 @@
 </head>
 <body>
 
+{% if current_user.is_authenticated and current_user.perfil == 'A' %}
+  {% include 'components/navbar_admin.html' %}
+{% elif current_user.is_authenticated and current_user.perfil == 'U' %}
+  {% include 'components/navbar_user.html' %} 
+{% else %}
+  {% include 'components/navbar.html' %} 
+{% endif %}
 
-  {% include 'components/navbar.html' %}
-
+ 
     <main id="contenido">
         {% block contenido %}{% endblock %}
     </main>
@@ -46,7 +52,7 @@
       <h3 id="loginTitle">Bienvenido de nuevo</h3>
       <p>Ingresa para ver tus pedidos y direcciones guardadas.</p>
 
-      <form id="loginForm" novalidate>
+      <form  novalidate>
         <div class="field">
           <label for="loginEmail">Correo electrónico</label>
           <input type="email" id="loginEmail" name="correo" placeholder="tu@correo.com" required>
@@ -93,7 +99,7 @@
       <h3 id="registerTitle">Crea tu cuenta</h3>
       <p>Guarda direcciones frecuentes y repite tus pedidos favoritos en un clic.</p>
 
-      <form action="{{url_for('signup')}}" method="post" id="registerForm" novalidate>
+      <form action="{{url_for('signup')}}" method="post" novalidate>
         <div class="field">
           <label for="registerName">Nombre completo</label>
           <input type="text" id="registerName" name="nombre" placeholder="Tu nombre" required>
